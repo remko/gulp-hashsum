@@ -71,3 +71,7 @@ by specifying `restart.txt` as the filename:
 - **`options.force`** - *boolean*  
     Always overwrite the hashsum file, regardless of whether the contents changed.  
     Default: `false`
+
+- **`options.delimiter`** - *string*  
+    Separator between hashsum und filenam.  
+    Default: `  ` (two spaces)

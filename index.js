@@ -17,7 +17,8 @@ function hashsum(options) {
 	options = _.defaults(options || {}, {
 		dest: process.cwd(),
 		hash: "sha1",
-		force: false
+		force: false,
+		delimiter: "  "
 	});
 	options = _.defaults(options, { filename: options.hash.toUpperCase() + "SUMS" });
 
@@ -42,8 +43,8 @@ function hashsum(options) {
 	}
 
 	function writeSums() {
-		var lines = _.keys(hashes).sort().map(function (key) { 
-			return hashes[key] + "  " + key + "\n";
+		var lines = _.keys(hashes).sort().map(function (key) {
+			return hashes[key] + options.delimiter + key + "\n";
 		});
 		var data = new Buffer(lines.join(""));
 

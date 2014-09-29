@@ -73,5 +73,5 @@ by specifying `restart.txt` as the filename:
     Default: `false`
 
 - **`options.delimiter`** - *string*  
-    Separator between hashsum und filenam.  
+    Separator between hashsum and filename.
     Default: `  ` (two spaces)

@@ -18,7 +18,7 @@ function hashsum(options) {
 		dest: process.cwd(),
 		hash: "sha1",
 		force: false,
-        delimiter: "  "
+		delimiter: "  "
 	});
 	options = _.defaults(options, { filename: options.hash.toUpperCase() + "SUMS" });
 

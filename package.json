@@ -1,6 +1,6 @@
 {
   "name": "gulp-hashsum",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Generate a checksum file (like shasum, md5sum, ...).",
   "keywords": [
     "gulp",

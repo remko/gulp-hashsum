@@ -11,7 +11,7 @@
     "md5sum",
     "checksum"
   ],
-  "homepage": "http://el-tramo.be/gulp-hashsum",
+  "homepage": "https://el-tramo.be/gulp-hashsum",
   "license": "MIT",
   "author": "Remko Tronçon",
   "main": "index.js",
@@ -21,6 +21,7 @@
   },
   "scripts": {
     "test": "node_modules/.bin/mocha",
+    "lint": "./node_modules/.bin/eslint .",
     "coverage": "node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha"
   },
   "dependencies": {
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "chai": "~1.9.1",
+    "eslint": "^0.17.1",
     "istanbul": "~0.3.0",
     "mocha": "~1.21.4",
     "mock-fs": "~2.3.1",

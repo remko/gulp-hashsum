@@ -1,4 +1,4 @@
-# [gulp-hashsum: Generate checksum files with Gulp](http://el-tramo.be/gulp-hashsum)
+# [gulp-hashsum: Generate checksum files with Gulp](https://el-tramo.be/gulp-hashsum)
 
 A [Gulp](http://gulpjs.com/) plugin for generating a checksum file with the hash checksums of the
 passed files. The file follows the same format as `shasum`, `sha1sum`, `md5sum`, and similar tools.

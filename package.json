@@ -34,8 +34,8 @@
   },
   "devDependencies": {
     "chai": "~1.9.1",
-    "eslint": "^0.21.0",
-    "eslint-config-remko": "^1.0.0",
+    "eslint": "^1.10.1",
+    "eslint-config-remko": "^1.0.8",
     "ghooks": "^0.3.0",
     "istanbul": "~0.3.0",
     "mocha": "~1.21.4",

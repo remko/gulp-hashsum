@@ -1,6 +1,5 @@
 'use strict';
 
-var buffertools = require('buffertools');
 var crypto = require('crypto');
 var gutil = require('gulp-util');
 var _ = require('lodash');
@@ -46,7 +45,7 @@ function hashsum(options) {
 		});
 		var data = new Buffer(lines.join(''));
 
-		if (options.force || !fs.existsSync(hashesFilePath) || buffertools.compare(fs.readFileSync(hashesFilePath), data) !== 0) {
+		if (options.force || !fs.existsSync(hashesFilePath) || Buffer.compare(fs.readFileSync(hashesFilePath), data) !== 0) {
 			mkdirp(path.dirname(hashesFilePath));
 			fs.writeFileSync(hashesFilePath, data);
 		}

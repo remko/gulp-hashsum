@@ -75,3 +75,7 @@ by specifying `restart.txt` as the filename:
 - **`options.delimiter`** - *string*  
     Separator between hashsum and filename.
     Default: `  ` (two spaces)
+
+- **`options.json`** - *string*  
+    Write JSON file with filenames as keys, hashes as values.
+    Default: `false`

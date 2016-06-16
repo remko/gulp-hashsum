@@ -75,3 +75,14 @@ by specifying `restart.txt` as the filename:
 - **`options.delimiter`** - *string*  
     Separator between hashsum and filename.
     Default: `  ` (two spaces)
+
+- **`options.json`** - *boolean*  
+    Write JSON file with filenames as keys, hashes as values.
+    E.g.:
+
+        {
+          "dir1/file1": "3ff1f9baca7bf41fe4a12222436025c036ba88bf",
+          "dir1/file2": "14de86e007f14bc0c6bc9a84d21cb9da908495ae"
+        } 
+        
+    Default: `false`

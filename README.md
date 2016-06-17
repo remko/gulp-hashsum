@@ -77,7 +77,7 @@ by specifying `restart.txt` as the filename:
     Default: `  ` (two spaces)
 
 - **`options.json`** - *boolean*  
-    Write JSON file with filenames as keys, hashes as values.
+    Format hash file as a JSON object (instead of a `options.delimiter`-delimited file).
     E.g.:
 
         {
@@ -86,3 +86,14 @@ by specifying `restart.txt` as the filename:
         } 
         
     Default: `false`
+
+
+## Changelog
+
+### 1.1.0 (2016-06-16)
+
+- Add `json` option.
+
+### 1.0.1 (2016-01-29)
+
+- Initial version

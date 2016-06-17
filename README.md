@@ -96,4 +96,8 @@ by specifying `restart.txt` as the filename:
 
 ### 1.0.1 (2016-01-29)
 
-- Initial version
+- Remove `buffertools` dependency
+
+### 1.0.0 (2014-09-29)
+
+- Initial release

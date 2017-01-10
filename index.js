@@ -10,26 +10,27 @@ var through = require('through');
 var fs = require('fs');
 var path = require('path');
 
-var compareBuffer = typeof Buffer.compare !== 'undefined' 
-		? Buffer.compare 
-		: function (a, b) {
-			// Naive implementation of Buffer comparison for older 
-			// Node versions. Doesn't follow the same spec as 
-			// Buffer.compare, but we're only interested in equality.
-			if (a.length !== b.length) {
+var compareBuffer = typeof Buffer.compare !== 'undefined'
+	? Buffer.compare
+	: function (a, b) {
+		// Naive implementation of Buffer comparison for older 
+		// Node versions. Doesn't follow the same spec as 
+		// Buffer.compare, but we're only interested in equality.
+		if (a.length !== b.length) {
+			return -1;
+		}
+		for (var i = 0; i < a.length; i++) {
+			if (a[i] !== b[i]) {
 				return -1;
 			}
-			for (var i = 0; i < a.length; i++) {
-				if (a[i] !== b[i]) {
-					return -1;
-				}
-			}
-			return 0;
-		};
+		}
+		return 0;
+	};
 
 function hashsum(options) {
 	options = _.defaults(options || {}, {
 		dest: process.cwd(),
+		root: process.cwd(),
 		hash: 'sha1',
 		force: false,
 		delimiter: '  ',
@@ -48,8 +49,8 @@ function hashsum(options) {
 			this.emit('error', new gutil.PluginError('gulp-hashsum', 'Streams not supported'));
 			return;
 		}
-		var filePath = path.resolve(options.dest, file.path);
-		hashes[slash(path.relative(path.dirname(hashesFilePath), filePath))] = crypto
+		var filePath = path.resolve(options.root, file.path);
+		hashes[slash(path.relative(options.root, filePath))] = crypto
 			.createHash(options.hash)
 			.update(file.contents, 'binary')
 			.digest('hex');

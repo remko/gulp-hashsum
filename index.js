@@ -1,7 +1,7 @@
 'use strict';
 
 var crypto = require('crypto');
-var gutil = require('gulp-util');
+var PluginError = require('plugin-error');
 var _ = require('lodash');
 var mkdirp = require('mkdirp');
 var slash = require('slash');
@@ -11,21 +11,21 @@ var fs = require('fs');
 var path = require('path');
 
 var compareBuffer = typeof Buffer.compare !== 'undefined' 
-		? Buffer.compare 
-		: function (a, b) {
-			// Naive implementation of Buffer comparison for older 
-			// Node versions. Doesn't follow the same spec as 
-			// Buffer.compare, but we're only interested in equality.
-			if (a.length !== b.length) {
+	? Buffer.compare 
+	: function (a, b) {
+		// Naive implementation of Buffer comparison for older 
+		// Node versions. Doesn't follow the same spec as 
+		// Buffer.compare, but we're only interested in equality.
+		if (a.length !== b.length) {
+			return -1;
+		}
+		for (var i = 0; i < a.length; i++) {
+			if (a[i] !== b[i]) {
 				return -1;
 			}
-			for (var i = 0; i < a.length; i++) {
-				if (a[i] !== b[i]) {
-					return -1;
-				}
-			}
-			return 0;
-		};
+		}
+		return 0;
+	};
 
 function hashsum(options) {
 	options = _.defaults(options || {}, {
@@ -45,7 +45,7 @@ function hashsum(options) {
 			return;
 		}
 		if (file.isStream()) {
-			this.emit('error', new gutil.PluginError('gulp-hashsum', 'Streams not supported'));
+			this.emit('error', new PluginError('gulp-hashsum', 'Streams not supported'));
 			return;
 		}
 		var filePath = path.resolve(options.dest, file.path);

@@ -5,7 +5,7 @@
 var mock = require('mock-fs');
 var fs = require('fs');
 var path = require('path');
-var gutil = require('gulp-util');
+var Vinyl = require('vinyl');
 var expect = require('chai').expect;
 var sleep = require('sleep');
 var hashsum = require('../index.js');
@@ -14,7 +14,7 @@ var _ = require('lodash');
 describe('gulp-hashsum', function () {
 	function streamFiles(stream, files) {
 		files.forEach(function (file) {
-			stream.write(new gutil.File({
+			stream.write(new Vinyl({
 				contents: fs.readFileSync(file),
 				path: path.resolve(file)
 			}));
@@ -285,7 +285,7 @@ describe('gulp-hashsum', function () {
 			done();
 		});
 
-		stream.write(new gutil.File({contents: null, path: '/dir1/foo'}));
+		stream.write(new Vinyl({contents: null, path: '/dir1/foo'}));
 		stream.end();
 	});
 
@@ -294,7 +294,7 @@ describe('gulp-hashsum', function () {
 	it('should not accept streams', function (done) {
 		var stream = hashsum({dest: '/dir1', force: true});
 
-		var file = new gutil.File({ contents: fs.createReadStream('/dir1/file1'), path: '/dir1/file1' });
+		var file = new Vinyl({ contents: fs.createReadStream('/dir1/file1'), path: '/dir1/file1' });
 		expect(function () { stream.write(file); }).to.Throw();
 		done();
 	});

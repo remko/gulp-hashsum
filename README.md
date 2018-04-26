@@ -23,8 +23,8 @@ The following generates a file `app/SHA1SUMS` with all the SHA-1 checksums of al
 
 The contents of the `SHA1SUMS` file will look like this:
 
-    	3ff1f9baca7bf41fe4a12222436025c036ba88bf  main.js
-    	14de86e007f14bc0c6bc9a84d21cb9da908495ae  submodule/sub.js
+    3ff1f9baca7bf41fe4a12222436025c036ba88bf  main.js
+    14de86e007f14bc0c6bc9a84d21cb9da908495ae  submodule/sub.js
 
 ### Use a different hash than SHA-1
 
@@ -92,7 +92,7 @@ to pipes:
           "dir1/file2": "14de86e007f14bc0c6bc9a84d21cb9da908495ae"
         }
 
-Default: `false`
+  Default: `false`
 
 * **`options.stream`** - _boolean_  
    Instead of writing the file to disk, stream it (so it can be passed to later

@@ -56,7 +56,7 @@ to pipes:
 
     gulp.src(["app/**/*.js"]).
         pipe(hashsum({stream: true})).
-    pipe(gulp.dest("app"));
+        pipe(gulp.dest("app"));
 
 ## API
 

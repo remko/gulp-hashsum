@@ -92,8 +92,7 @@ to pipes:
           "dir1/file2": "14de86e007f14bc0c6bc9a84d21cb9da908495ae"
         }
 
-
-  Default: `false`
+Default: `false`
 
 * **`options.stream`** - _boolean_  
    Instead of writing the file to disk, stream it (so it can be passed to later
@@ -102,6 +101,10 @@ to pipes:
   Default: `false`
 
 ## Changelog
+
+### 1.2.0 (2018-04-16)
+
+* Add `stream` option.
 
 ### 1.1.0 (2016-06-16)
 

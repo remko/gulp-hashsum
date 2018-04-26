@@ -64,7 +64,9 @@ to pipes:
 
 * **`options.dest`** - _string_  
    The destination directory of the hash file.  
-   Default: `process.cwd()` (the current working directory)
+   All paths in the hash file will be relative to this directory.
+
+  Default: `process.cwd()` (the current working directory)
 
 * **`options.filename`** - _string_  
    The filename of the hash file.  

@@ -6,6 +6,7 @@ var _ = require("lodash");
 var mkdirp = require("mkdirp");
 var slash = require("slash");
 var through = require("through");
+var Vinyl = require("vinyl");
 
 var fs = require("fs");
 var path = require("path");
@@ -34,7 +35,8 @@ function hashsum(options) {
     hash: "sha1",
     force: false,
     delimiter: "  ",
-    json: false
+    json: false,
+    stream: false
   });
   options = _.defaults(options, {
     filename: options.hash.toUpperCase() + "SUMS"
@@ -79,7 +81,15 @@ function hashsum(options) {
     }
     var data = new Buffer(contents);
 
-    if (
+    if (options.stream) {
+      this.emit(
+        "data",
+        new Vinyl({
+          path: hashesFilePath,
+          contents: data
+        })
+      );
+    } else if (
       options.force ||
       !fs.existsSync(hashesFilePath) ||
       compareBuffer(fs.readFileSync(hashesFilePath), data) !== 0

@@ -335,4 +335,29 @@ describe("gulp-hashsum", function() {
 
     streamFiles(stream, files);
   });
+
+  it("should stream", function(done) {
+    var files = ["/dir1/file1", "/dir1/file2"];
+    var stream = hashsum({ stream: true, dest: "/dir1" });
+    var streamedFiles = [];
+
+    stream.on("data", function(file) {
+      streamedFiles.push(file);
+    });
+
+    stream.on("end", function() {
+      expect(fs.readdirSync(process.cwd()).length).to.eql(0);
+      expect(streamedFiles.length).to.eql(3);
+      expect(streamedFiles[2].path).to.eql("/dir1/SHA1SUMS");
+      expect(streamedFiles[2].contents + "").to.eql(
+        [
+          "3ff1f9baca7bf41fe4a12222436025c036ba88bf  file1",
+          "14de86e007f14bc0c6bc9a84d21cb9da908495ae  file2"
+        ].join("\n") + "\n"
+      );
+      done();
+    });
+
+    streamFiles(stream, files);
+  });
 });
